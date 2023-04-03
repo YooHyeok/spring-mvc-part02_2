@@ -9,4 +9,8 @@ public enum ItemType {
     ItemType(String description) { // 생성자 Enum타입
         this.description = description;
     }
+
+    public String getDescription() {
+        return description;
+    }
 }
