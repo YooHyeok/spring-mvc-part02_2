@@ -18,18 +18,27 @@
         <h2>상품 등록 폼</h2>
     </div>
 
-    <form action="item.html" th:action method="post">
+    <!-- th:object 속성 => 컨트롤러로부터 객체를 받아 사용한다.-->
+<!--    <form action="item.html" th:action method="post">-->
+    <form action="item.html" th:action th:object="${item}" method="post">
         <div>
             <label for="itemName">상품명</label>
-            <input type="text" id="itemName" name="itemName" class="form-control" placeholder="이름을 입력하세요">
+            <!-- th:field 속성 => id속성과 name속성을 자동으로 만들어준다.
+                 th:object로 선언한 객체에 접근하여 itemName필드를 사용한다.
+                 *{...} 선택변수식 : $대신 *을 사용하면 th:object에서 선택한 객체에 접근한다.-->
+<!--            <input type="text" id="itemName" name="itemName" class="form-control" placeholder="이름을 입력하세요">-->
+<!--            <input type="text" th:field="${item.itemName}" class="form-control" placeholder="이름을 입력하세요">-->
+            <input type="text" th:field="*{itemName}" class="form-control" placeholder="이름을 입력하세요"> <!-- -->
         </div>
         <div>
             <label for="price">가격</label>
-            <input type="text" id="price" name="price" class="form-control" placeholder="가격을 입력하세요">
+<!--            <input type="text" id="price" name="price" class="form-control" placeholder="가격을 입력하세요">-->
+            <input type="text" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요">
         </div>
         <div>
             <label for="quantity">수량</label>
-            <input type="text" id="quantity" name="quantity" class="form-control" placeholder="수량을 입력하세요">
+<!--            <input type="text" id="quantity" name="quantity" class="form-control" placeholder="수량을 입력하세요">-->
+            <input type="text" th:field="*{quantity}" class="form-control" placeholder="수량을 입력하세요">
         </div>
 
         <hr class="my-4">
