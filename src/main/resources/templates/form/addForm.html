@@ -57,6 +57,16 @@
             </div>
         </div>
 
+        <div>
+            <div>등록 지역</div>
+            <div th:each="region : ${regions}" class="form-check form-check-inline">
+                <!-- th:field가 each 루프에서 돌때 name은 그대로지만 id의 마지막값에 정수가 순차적으로 자동으로 붙는다.-->
+                <input type="checkbox" th:field="*{regions}" th:value="${region.key}" class="form-check-input">
+                <!-- ids.prev(...) , ids.next(...) : input에 있는 th:field로 인해 생성된 id값을 순차적으로 부여해준다.-->
+                <label th:for="${#ids.prev('regions')}" th:text="${region.value}" class="form-check-label"></label>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col">
                 <button class="w-100 btn btn-primary btn-lg" type="submit">상품 등록</button>
