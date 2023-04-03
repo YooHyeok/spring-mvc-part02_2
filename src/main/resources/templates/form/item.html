@@ -75,6 +75,7 @@
     <!-- SELECT -->
     <div>
         <div>배송 방식</div>
+        <!-- item.deliveryCode와 th:value의 deliveryCode.code 값중 일치하는 값에 selected=selected가 부여된다.-->
         <select th:field="${item.deliveryCode}" class="form-select" disabled> <!-- name, id 생성-->
             <option value="">== 배송 방식 선택 ==</option>
             <option th:each="deliveryCode : ${deliveryCodes}" th:value="${deliveryCode.code}"
