@@ -49,6 +49,20 @@
         </div>
     </div>
 
+    <div>
+        <div>등록 지역</div>
+        <div th:each="region : ${regions}" class="form-check form-check-inline">
+            <!-- 출력폼 checkbox 원리 : regions에 존재하는 체크박스를 모두 출력해 준 뒤
+             th:value를 통해 region으로부터 key를 반복해서 추출하고,
+              추출된 key가 th:field로 선언된 item.regions에 있는 체크박스에만 checked옵션을 부여 한다.
+              ex) regions = [BUSAN,JEJU,SEOUL] \ item.regions = [BUSAN,JEJU]
+              즉, th:value와 th:field가 서로 비교된 뒤 자동으로 처리한다.
+             이때 id, name value는 기존 규칙 그대로 적용되어 작성된다. -->
+            <input type="checkbox" th:field="${item.regions}" th:value="${region.key}" class="form-check-input" disabled>
+            <label th:for="${#ids.prev('regions')}" th:text="${region.value}" class="form-check-label"></label>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col">
             <button class="w-100 btn btn-primary btn-lg"
